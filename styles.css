@@ -1,0 +1,153 @@
+html {
+  --white: hsl(0, 100%, 100%);
+  --background-color: hsl(28, 31.7%, 92%);
+  --card-content-background: var(--white);
+  height: 100%;
+}
+p,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+* {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+  shape-margin: 0.75rem;
+}
+
+body {
+  margin: 0;
+  height: inherit;
+  width: 100%;
+  background-color: var(--background-color);
+}
+
+main {
+  display: grid;
+  place-content: center;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  margin: 1rem 1rem;
+  height: 100%;
+}
+
+.card > picture > img {
+  width: 100%;
+  max-width: 314px;
+  height: 100%;
+  border-radius: 10px 0px 0px 10px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 32px;
+  border-radius: 0 10px 10px 0;
+  width: 100%;
+  max-width: 250px;
+  background-color: var(--card-content-background);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-type {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: hsl(228, 12%, 48%);
+  margin-bottom: 1rem;
+}
+
+.card-name,
+.card-sale-price {
+  font-family: "Fraunces", sans-serif;
+}
+
+.card-name {
+  font-size: 2rem;
+  line-height: 2rem;
+  margin-bottom: 1rem;
+}
+
+.card-description {
+  font-size: 14px;
+  line-height: 1.3rem;
+  color: hsl(228, 12%, 48%);
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 1rem;
+}
+
+.card-prices {
+  margin-bottom: 1rem;
+}
+
+.card-sale-price {
+  color: hsl(158, 36%, 37%);
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+.card-regular-price {
+  text-decoration: line-through;
+  font-size: 0.8rem;
+  color: hsl(228, 12%, 48%);
+}
+
+.card-button {
+  background-color: hsl(158, 36%, 37%);
+  font-family: "Montserrat";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  padding: 16px 8px 16px 8px;
+  cursor: pointer;
+}
+
+.card-button:hover {
+  background-color: hsl(158, 36%, 20%);
+}
+
+@media (width <= 627px) {
+  .card {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .card > picture > img {
+    border-radius: 10px 10px 0 0;
+  }
+  .card-content {
+    border-radius: 0px 0px 10px 10px;
+  }
+  .card-type,
+  .card-name,
+  .card-description,
+  .card-prices {
+    margin-bottom: 0.2rem;
+  }
+}
+
+.attribution {
+  margin-top: 1rem;
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
