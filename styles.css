@@ -1,33 +1,80 @@
-html {
-  --white: hsl(0, 100%, 100%);
-  --background-color: hsl(28, 31.7%, 92%);
-  --card-content-background: var(--white);
-  height: 100%;
+/* Josh Comeau CSS Reset */
+/* 1. Use a more-intuitive box-sizing model. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-p,
-h2 {
-  margin: 0;
-  padding: 0;
-}
+/*
+  2. Remove default margin
+*/
 * {
   margin: 0;
 }
-
-img {
+/*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  5. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
   max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-  font-style: italic;
-  background-repeat: no-repeat;
-  background-size: cover;
-  shape-margin: 0.75rem;
+}
+/*
+  6. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+  7. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+:root {
+  --clr-primary-400: hsl(158, 36%, 37%);
+  --clr-primary-600: hsl(158, 36%, 20%);
+  --clr-secondary-400: hsl(30, 38%, 92%);
+
+  --dark-blue: hsl(212, 21%, 14%);
+  --grayish-blue: hsl(228, 12%, 48%);
+  --white: hsl(0, 0%, 100%);
+
+  --ff-primary: "Montserrat", sans-serif;
+  --ff-accent: "Fraunces", serif;
 }
 
 body {
-  margin: 0;
-  height: inherit;
-  width: 100%;
-  background-color: var(--background-color);
+  font-family: var(--ff-primary);
+  color: var(--grayish-blue);
+  background-color: var(--clr-secondary-400);
 }
 
 main {
@@ -35,111 +82,85 @@ main {
   place-content: center;
 }
 
-.card {
-  display: flex;
-  flex-wrap: wrap;
-  border-radius: 10px;
-  margin: 1rem 1rem;
-  height: 100%;
+p {
+  line-height: 1.7;
+  font-size: 14px;
 }
 
-.card > picture > img {
-  width: 100%;
-  max-width: 314px;
-  height: 100%;
-  border-radius: 10px 0px 0px 10px;
-  object-fit: cover;
+.card {
+  display: grid;
+  max-width: 600px;
+  margin: 1rem 1rem;
+  border-radius: 0.5rem;
 }
 
 .card-content {
-  padding: 32px;
-  border-radius: 0 10px 10px 0;
-  width: 100%;
-  max-width: 250px;
-  background-color: var(--card-content-background);
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
+  gap: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  background-color: var(--white);
 }
 
 .card-type {
-  font-family: "Montserrat", sans-serif;
-  letter-spacing: 4px;
+  letter-spacing: 5px;
   text-transform: uppercase;
-  font-size: 11px;
-  color: hsl(228, 12%, 48%);
-  margin-bottom: 1rem;
-}
-
-.card-name,
-.card-sale-price {
-  font-family: "Fraunces", sans-serif;
+  color: var(--grayish-blue);
 }
 
 .card-name {
   font-size: 2rem;
-  line-height: 2rem;
-  margin-bottom: 1rem;
-}
-
-.card-description {
-  font-size: 14px;
-  line-height: 1.3rem;
-  color: hsl(228, 12%, 48%);
-  font-family: "Montserrat", sans-serif;
-  margin-bottom: 1rem;
+  color: var(--dark-blue);
+  line-height: 1.1;
+  font-family: var(--ff-accent);
 }
 
 .card-prices {
-  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .card-sale-price {
-  color: hsl(158, 36%, 37%);
   font-size: 2rem;
-  margin-right: 0.5rem;
+  color: var(--clr-primary-400);
+  font-family: var(--ff-accent);
 }
 
 .card-regular-price {
-  text-decoration: line-through;
-  font-size: 0.8rem;
-  color: hsl(228, 12%, 48%);
+  font-size: 0.825rem;
 }
 
 .card-button {
-  background-color: hsl(158, 36%, 37%);
-  font-family: "Montserrat";
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  color: var(--white);
   border: none;
-  border-radius: 10px;
-  padding: 16px 8px 16px 8px;
   cursor: pointer;
+  background-color: var(--clr-primary-400);
+  color: var(--white);
+  padding: 0.825rem 1rem;
+  border-radius: 8px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  &::before {
+    content: "";
+    background-image: url("images/icon-cart.svg");
+    width: 15px;
+    height: 16px;
+  }
+
+  &:hover {
+    background-color: var(--clr-primary-600);
+  }
 }
 
-.card-button:hover {
-  background-color: hsl(158, 36%, 20%);
-}
-
-@media (width <= 627px) {
+@media (width > 600px) {
   .card {
-    flex-direction: column;
-    flex-wrap: nowrap;
+    grid-template-columns: 1fr 1fr;
   }
-  .card > picture > img {
-    border-radius: 10px 10px 0 0;
-  }
+
   .card-content {
-    border-radius: 0px 0px 10px 10px;
-  }
-  .card-type,
-  .card-name,
-  .card-description,
-  .card-prices {
-    margin-bottom: 0.2rem;
+    gap: 1rem;
   }
 }
 
